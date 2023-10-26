@@ -11,6 +11,9 @@ app.use(express.json());
 app.use(cors());
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
+app.get("/", (req, res) => {
+    res.status(200).send("welcome to home page")
+})
 
 app.listen(process.env.port, async () => {
     try {

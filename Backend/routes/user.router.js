@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/user.model");
+const { BlackListModel } = require("../model/blacklist.model")
 
 userRouter.post("/register", (req, res) => {
     const { name, email, pass } = req.body;
@@ -31,7 +32,7 @@ userRouter.post("/login", async (req, res) => {
         if (user) {
             bcrypt.compare(pass, user.pass, (err, result) => {
                 if (result) {
-                    const token = jwt.sign({ name: user.name, userId: user._id }, "users");
+                    const token = jwt.sign({ username: user.name, userId: user._id }, "users");
                     res.status(200).send({ "message": "Successfully logged in.", "token": token })
                 }
                 else {
@@ -44,6 +45,17 @@ userRouter.post("/login", async (req, res) => {
         }
     } catch (error) {
         res.status(400).send({ "message": "Something went wrong.", "err": error })
+    }
+})
+
+userRouter.get("/logout", async (req, res) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    try {
+        const list = new BlackListModel({ token });
+        await list.save();
+        res.status(200).send({ "message": "Successfully logged out" });
+    } catch (error) {
+        res.status(400).send({ "message": "Something went wrong", "err": error })
     }
 })
 
