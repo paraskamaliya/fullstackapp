@@ -5,44 +5,44 @@ const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/user.model");
 const { BlackListModel } = require("../model/blacklist.model")
 
-/**
- * @swagger
- * components:
- *  schemas:
- *      User:
- *          type: object
- *          properties:
- *              id:
- *                  type: string
- *                  description: The auto-generated id of user
- *              name:
- *                  type: string
- *                  description: The name of user
- *              email:
- *                  type: string
- *                  description: The email of user
- */
+// /**
+//  * @swagger
+//  * components:
+//  *  schemas:
+//  *      User:
+//  *          type: object
+//  *          properties:
+//  *              id:
+//  *                  type: string
+//  *                  description: The auto-generated id of user
+//  *              name:
+//  *                  type: string
+//  *                  description: The name of user
+//  *              email:
+//  *                  type: string
+//  *                  description: The email of user
+//  */
 
 
-/**
- * @swagger
- * /users/register:
- *  post:
- *      summary: to post the details of new user
- *      requestBody:
- *          required: true
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: '#/components/schemas/User'
- *      responses:
- *          200:
- *              description: The user was successfully registered
- *              content:
- *                  application/json:
- *                      schema:
- *                           $ref: '#/components/schemas/User'
- */
+// /**
+//  * @swagger
+//  * /users/register:
+//  *  post:
+//  *      summary: to post the details of new user
+//  *      requestBody:
+//  *          required: true
+//  *          content:
+//  *              application/json:
+//  *                  schema:
+//  *                      $ref: '#/components/schemas/User'
+//  *      responses:
+//  *          200:
+//  *              description: The user was successfully registered
+//  *              content:
+//  *                  application/json:
+//  *                      schema:
+//  *                           $ref: '#/components/schemas/User'
+//  */
 
 userRouter.post("/register", (req, res) => {
     const { name, email, pass } = req.body;
