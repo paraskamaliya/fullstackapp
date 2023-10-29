@@ -12,23 +12,23 @@ const { postRouter } = require("./routes/post.router");
 app.use(cors());
 app.use(express.json());
 
-// const options = {
-//     definition: {
-//         openai: "3.0.0",
-//         info: {
-//             title: "fullstack app",
-//             version: "1.0.0"
-//         },
-//         servers: [
-//             {
-//                 url: "https://localhost:5000"
-//             }
-//         ]
-//     },
-//     apis: ["./routes/*.js"]
-// }
-// const swaggerSpec = swaggerJSDoc(options)
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "fullstack app",
+            version: "1.0.0"
+        },
+        servers: [
+            {
+                url: "https://shiny-duck-leotard.cyclic.app"
+            }
+        ]
+    },
+    apis: ["./routes/*.js"]
+}
+const swaggerSpec = swaggerJSDoc(options)
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
