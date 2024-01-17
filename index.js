@@ -21,7 +21,7 @@ const options = {
         },
         servers: [
             {
-                url: "https://full-jrsi.onrender.com/"
+                url: "https://full-jrsi.onrender.com/api"
             }
         ]
     },
