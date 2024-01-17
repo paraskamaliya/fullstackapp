@@ -21,7 +21,7 @@ const options = {
         },
         servers: [
             {
-                url: "https://shiny-duck-leotard.cyclic.app"
+                url: "https://full-jrsi.onrender.com/"
             }
         ]
     },
